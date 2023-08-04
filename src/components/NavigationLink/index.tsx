@@ -1,5 +1,5 @@
-import AboutLink from "@components/AboutLink";
-import HomeLink from "@components/HomeLink";
+import AboutLink from "@/components/AboutLink";
+import HomeLink from "@/components/HomeLink";
 
 export default () => {
     return (
