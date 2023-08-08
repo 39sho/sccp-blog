@@ -23,21 +23,19 @@ const { Content } = await post.render();
 <html lang="ja">
   <head>
     <HeadBase />
-    <title>Astro</title>
+    <title>sccp-blog | {post.data.title}</title>
   </head>
   <Body>
     <Header />
     <Article>
-      <div class="prose dark:prose-invert w-11/12 max-w-4xl">
-        <h1>{post.data.title}</h1>
-        <time datetime={post.data.date.toISOString()}>
-          {new Intl.DateTimeFormat("ja-JP").format(post.data.date)}
-        </time>
+      <h1>{post.data.title}</h1>
+      <time datetime={post.data.date.toISOString()}>
+        {new Intl.DateTimeFormat("ja-JP").format(post.data.date)}
+      </time>
+      <div class="w-full py-5 px-5 rounded-xl border-solid border-2">
         <Content />
-        tags: [{post.data.tags.join(",")}]
       </div>
+      tags: [{post.data.tags.join(",")}]
     </Article>
   </Body>
-
-
 </html>
