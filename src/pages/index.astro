@@ -4,7 +4,9 @@ import Home from "@/layouts/Home";
 import HeadBase from "@/features/HeadBase";
 import Body from "@/features/Body";
 
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { ViewTransitions } from "astro:transitions";
+import Header from "@/features/Header";
 const posts = await getCollection("blog");
 ---
 
@@ -12,22 +14,31 @@ const posts = await getCollection("blog");
   <head>
     <HeadBase />
     <title>sccp-blog</title>
+    <ViewTransitions />
   </head>
   <Body>
-    <Home>
-      {
-        posts.sort((postA, postB) => postB.data.date.getTime() - postA.data.date.getTime()).map((post) => {
-          return (
-            <ArticleCard
-              url={`/sccp-blog/blog/${post.slug}`}
-              title={post.data.title}
-              date={post.data.date}
-            >
-              {post.body}
-            </ArticleCard>
-          );
-        })
-      }
-    </Home>
+    <Header />
+    <div transition:animate="slide">
+      <Home>
+        {
+          posts
+            .sort(
+              (postA, postB) =>
+                postB.data.date.getTime() - postA.data.date.getTime()
+            )
+            .map((post) => {
+              return (
+                <ArticleCard
+                  url={`/sccp-blog/blog/${post.slug}`}
+                  title={post.data.title}
+                  date={post.data.date}
+                >
+                  {post.body}
+                </ArticleCard>
+              );
+            })
+        }
+      </Home>
+    </div>
   </Body>
 </html>

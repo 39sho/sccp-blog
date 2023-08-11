@@ -8,4 +8,7 @@ export default defineConfig({
   site: "https://39sho.github.io",
   base: "/sccp-blog",
   integrations: [react(), tailwind()],
+  experimental: {
+    viewTransitions: true,
+  },
 });

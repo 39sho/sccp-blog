@@ -1,16 +1,19 @@
 ---
-import ArticleCard from "@/features/ArticleCard";
 import Home from "@/layouts/Home";
 import HeadBase from "@/features/HeadBase";
 import Body from "@/features/Body";
+import { ViewTransitions } from "astro:transitions";
+import Header from "@/features/Header";
 ---
 
-<html lang="ja">
+<html lang="ja" transition:animate="slide">
   <head>
     <HeadBase />
     <title>sccp-blog | about</title>
+    <ViewTransitions />
   </head>
   <Body>
+    <Header />
     <Home>
       <div></div>
     </Home>
